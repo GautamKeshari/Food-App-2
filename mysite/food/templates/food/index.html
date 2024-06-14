@@ -1,0 +1,22 @@
+{% extends 'food/base.html' %}
+
+{% block body %}
+    <div class="container">
+        {% for item in item_list %}
+            <div class="row my-3">
+                <div class="col-md-3">
+                    <img class="img-fluid card-img-top" style="height: 150px; width: inherit;" src="{{ item.item_image }}" alt="Item Image">
+                </div>
+                <div class="col-md-7">
+                    <h3>{{ item.item_name }}</h3>
+                    <p>{{ item.item_desc }}</p>
+                    <p><strong>${{ item.item_price }}</strong></p>
+                    <p>{{ item.user_name }}</p>
+                </div>
+                <div class="col-md-2 d-flex align-items-center">
+                    <a href="{% url 'food:detail' item.id %}" class="btn btn-success btn-block">Details</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
